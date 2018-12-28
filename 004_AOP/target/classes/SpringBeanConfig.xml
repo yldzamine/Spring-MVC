@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="beanPersonel" class="com.amine.model.Personel">
+		<property name="adi" value="AMİNE"></property>
+		<property name="soyadi" value="YAZGAN"></property>
+		<property name="tecrube" value="5"></property>
+	</bean>
+	<bean id="beanPersonel2" class="com.amine.model.Personel">
+		<property name="adi" value="Emre"></property>
+		<property name="soyadi" value="AYDIN"></property>
+		<property name="tecrube" value="3"></property>
+	</bean>
+	<bean id="metotOncesibean" class="com.amine.aop.MetotOncesi"></bean>
+	<bean id="beanPersonelProxy"
+		class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="beanPersonel"></property>
+		<property name="interceptorNames">
+			<list>
+				<value>metotOncesibean</value>
+			</list>
+		</property>
+	</bean>
+</beans>
